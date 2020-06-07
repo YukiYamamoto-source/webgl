@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>おつかれ</title>
+        <meta http-equiv="content-type" charset="utf-8">
+        <script src="https://wgld.org/j/minMatrixb.js" type="text/javascript"></script>
+        <script src="script.js" type="text/javascript"></script>
+        
+        <script id="vs" type="x-shader/x-vertex">
+            attribute vec2  position;
+            void main(void){
+                gl_Position  = vec4(position, 0.0, 1.0);
+                gl_PointSize = 2.;
+            }
+        </script>
+        
+        <script id="fs" type="x-shader/x-fragment">
+            precision mediump float;
+            uniform vec4 pointColor;
+            void main(void){
+                gl_FragColor = pointColor;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>下の画像をクリックして，ぐりぐりできるで</h1>
+        <canvas id="canvas"></canvas>
+    </body>
+</html>
