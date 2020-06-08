@@ -216,7 +216,7 @@ class simulator{
 
         var material_line = new THREE.LineBasicMaterial({
             color: 0xffffff,
-            linewidth: 50
+            linewidth: 5
         });
         var points = [];
         points.push( new THREE.Vector3(0,0,0) );
