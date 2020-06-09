@@ -287,28 +287,18 @@ class simulator{
     }
 }
 
+function reset_force(){
+    apply_F = new THREE.Vector3(0,0,0);
+}
+
+function add_force(x,y,z){
+    apply_F.add(new THREE.Vector3(x,y,z));
+}
+
 document.body.addEventListener('keydown',
     event => {
         if (event.key === 'q') {
-            apply_F = new THREE.Vector3(0,0,0);
-        }
-        else if(event.key === 'x' && event.ctrlKey){
-            apply_F.add(new THREE.Vector3(-1000,0,0));
-        }
-        else if(event.key === 'y' && event.ctrlKey){
-            apply_F.add(new THREE.Vector3(0,-1000,0));
-        }
-        else if(event.key === 'z' && event.ctrlKey){
-            apply_F.add(new THREE.Vector3(0,0,-1000));
-        }
-        else if(event.key === 'x'){
-            apply_F.add(new THREE.Vector3(1000,0,0));
-        }
-        else if(event.key === 'y'){
-            apply_F.add(new THREE.Vector3(0,1000,0));
-        }
-        else if(event.key === 'z'){
-            apply_F.add(new THREE.Vector3(0,0,1000));
+            reset_force();
         }
     });
 
@@ -318,6 +308,44 @@ var g = new THREE.Vector3(0, -9810., 0);
 var pre_posA1 = new THREE.Vector3();
 var pre_posA2 = new THREE.Vector3();
 var apply_F   = new THREE.Vector3(100,80000,100);
-window.addEventListener('load', SIM=new simulator);
+window.addEventListener('load', function(){
+    document.getElementById( "X" ).onmousedown = function(){
+        $intervalID = setInterval(function(){add_force(1000,0,0);}, 20);
+    };
+    document.getElementById( "X" ).onmouseup = function(){
+        clearInterval($intervalID);
+    };
+    document.getElementById( "Y" ).onmousedown = function(){
+        $intervalID = setInterval(function(){add_force(0,1000,0);}, 20);
+    };
+    document.getElementById( "Y" ).onmouseup = function(){
+        clearInterval($intervalID);
+    };
+    document.getElementById( "Z" ).onmousedown = function(){
+        $intervalID = setInterval(function(){add_force(0,0,1000);}, 20);
+    };
+    document.getElementById( "Z" ).onmouseup = function(){
+        clearInterval($intervalID);
+    };
+    document.getElementById( "Xctrl" ).onmousedown = function(){
+        $intervalID = setInterval(function(){add_force(-1000,0,0);}, 20);
+    };
+    document.getElementById( "Xctrl" ).onmouseup = function(){
+        clearInterval($intervalID);
+    };
+    document.getElementById( "Yctrl" ).onmousedown = function(){
+        $intervalID = setInterval(function(){add_force(0,-1000,0);}, 20);
+    };
+    document.getElementById( "Yctrl" ).onmouseup = function(){
+        clearInterval($intervalID);
+    };
+    document.getElementById( "Zctrl" ).onmousedown = function(){
+        $intervalID = setInterval(function(){add_force(0,0,-1000);}, 20);
+    };
+    document.getElementById( "Zctrl" ).onmouseup = function(){
+        clearInterval($intervalID);
+    };
+    SIM=new simulator;
+});
 
 window.setInterval(function(){SIM.main_loop()}, T*1000);
