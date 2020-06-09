@@ -5,17 +5,17 @@ class Link{
         this.vec = new THREE.Vector3(0,0,0);
         this.link_f = new THREE.Vector3(0,0,0);
 
-        this.pos_a_0 = [new THREE.Vector3(50,50,50),new THREE.Vector3(-50,-50,50)];
+        this.pos_a_0 = [new THREE.Vector3(50,50,50),new THREE.Vector3(-50,-50,50),new THREE.Vector3(50,-50,-50)];
         this.pos_a   = this.pos_a_0.concat();
 
         this.In      = new THREE.Matrix3();
-        this.In.set(1e4, 0., 0.,
-                     0.,1e4, 0.,
-                     0., 0.,1e4);
+        this.In.set(5e3, 0., 0.,
+                     0.,5e3, 0.,
+                     0., 0.,5e3);
         this.invI      = new THREE.Matrix3();
-        this.invI.set(1/1e4,   0.,   0.,
-                         0.,1/1e4,   0.,
-                         0.,   0.,1/1e4);
+        this.invI.set(1/5e3,   0.,   0.,
+                         0.,1/5e3,   0.,
+                         0.,   0.,1/5e3);
  
         this.Rot      = new THREE.Matrix3();
         this.Rot.set(Math.cos(0.),0.,-Math.sin(0.),
@@ -198,8 +198,11 @@ class simulator{
 
         // レンダラーを作成
         this.renderer = new THREE.WebGLRenderer();
-        this.renderer.setSize( width, height );
-        document.body.appendChild( this.renderer.domElement );
+        this.renderer.setSize( width*0.5, height*0.5 );
+        this.c = document.getElementById('canvas');
+        this.c.width = 800;
+        this.c.height = 800;
+        this.c.appendChild( this.renderer.domElement );
 
         // シーンを作成
         this.scene = new THREE.Scene();
@@ -228,6 +231,14 @@ class simulator{
         var geometry_line2 = new THREE.BufferGeometry().setFromPoints( points );
         this.line2 = new THREE.Line(geometry_line2, material_line);
         this.scene.add( this.line2 );
+
+        var dir    = new THREE.Vector3();
+        var origin = new THREE.Vector3();
+        var length = 0.;
+        var hex = 0xffff00;
+
+        this.arrowHelper = new THREE.ArrowHelper( dir, origin, length, hex );
+        this.scene.add( this.arrowHelper );
     }
     
     main_loop(){
@@ -246,6 +257,8 @@ class simulator{
         this.box1.link_t.add(this.box1.GetPosA(0).add(this.box1.GetPos.multiplyScalar(-1)).cross(F1));
         this.box1.link_f.add(F2);
         this.box1.link_t.add(this.box1.GetPosA(1).add(this.box1.GetPos.multiplyScalar(-1)).cross(F2));
+        this.box1.link_f.add(apply_F);
+        this.box1.link_t.add(this.box1.GetPosA(2).add(this.box1.GetPos.multiplyScalar(-1)).cross(apply_F));
 
 
         pre_posA1.copy(this.box1.GetPosA(0));
@@ -260,19 +273,51 @@ class simulator{
         points.push( spring2 );
         points.push( this.box1.GetPosA(1) );
         this.line2.geometry.setFromPoints( points );
+
         
         this.box1.update_phis();
         this.box.position.copy(this.box1.GetPos);
+
+        this.arrowHelper.position.copy(this.box1.GetPosA(2));
+        this.arrowHelper.setLength(apply_F.length()/1000.);
+        this.arrowHelper.setDirection(apply_F.clone().normalize());
+
         this.box.setRotationFromMatrix(this.box1.Rot4);
         this.renderer.render(this.scene, this.camera);
     }
 }
+
+document.body.addEventListener('keydown',
+    event => {
+        if (event.key === 'q') {
+            apply_F = new THREE.Vector3(0,0,0);
+        }
+        else if(event.key === 'x' && event.ctrlKey){
+            apply_F.add(new THREE.Vector3(-1000,0,0));
+        }
+        else if(event.key === 'y' && event.ctrlKey){
+            apply_F.add(new THREE.Vector3(0,-1000,0));
+        }
+        else if(event.key === 'z' && event.ctrlKey){
+            apply_F.add(new THREE.Vector3(0,0,-1000));
+        }
+        else if(event.key === 'x'){
+            apply_F.add(new THREE.Vector3(1000,0,0));
+        }
+        else if(event.key === 'y'){
+            apply_F.add(new THREE.Vector3(0,1000,0));
+        }
+        else if(event.key === 'z'){
+            apply_F.add(new THREE.Vector3(0,0,1000));
+        }
+    });
 
 // ページの読み込みを待つ
 var T = 0.001;
 var g = new THREE.Vector3(0, -9810., 0);
 var pre_posA1 = new THREE.Vector3();
 var pre_posA2 = new THREE.Vector3();
+var apply_F   = new THREE.Vector3(100,80000,100);
 window.addEventListener('load', SIM=new simulator);
 
 window.setInterval(function(){SIM.main_loop()}, T*1000);
