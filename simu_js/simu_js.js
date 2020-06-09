@@ -315,10 +315,22 @@ window.addEventListener('load', function(){
     document.getElementById( "X" ).onmouseup = function(){
         clearInterval($intervalID);
     };
+    document.getElementById( "X" ).ontouchstart = function(){
+        $intervalID = setInterval(function(){add_force(1000,0,0);}, 20);
+    };
+    document.getElementById( "X" ).ontouchend = function(){
+        clearInterval($intervalID);
+    };
     document.getElementById( "Y" ).onmousedown = function(){
         $intervalID = setInterval(function(){add_force(0,1000,0);}, 20);
     };
     document.getElementById( "Y" ).onmouseup = function(){
+        clearInterval($intervalID);
+    };
+    document.getElementById( "Y" ).ontouchstart = function(){
+        $intervalID = setInterval(function(){add_force(0,1000,0);}, 20);
+    };
+    document.getElementById( "Y" ).ontouchend = function(){
         clearInterval($intervalID);
     };
     document.getElementById( "Z" ).onmousedown = function(){
@@ -327,10 +339,22 @@ window.addEventListener('load', function(){
     document.getElementById( "Z" ).onmouseup = function(){
         clearInterval($intervalID);
     };
+    document.getElementById( "Z" ).ontouchstart = function(){
+        $intervalID = setInterval(function(){add_force(0,0,1000);}, 20);
+    };
+    document.getElementById( "Z" ).ontouchend = function(){
+        clearInterval($intervalID);
+    };
     document.getElementById( "Xctrl" ).onmousedown = function(){
         $intervalID = setInterval(function(){add_force(-1000,0,0);}, 20);
     };
     document.getElementById( "Xctrl" ).onmouseup = function(){
+        clearInterval($intervalID);
+    };
+    document.getElementById( "Xctrl" ).ontouchstart = function(){
+        $intervalID = setInterval(function(){add_force(-1000,0,0);}, 20);
+    };
+    document.getElementById( "Xctrl" ).ontouchend = function(){
         clearInterval($intervalID);
     };
     document.getElementById( "Yctrl" ).onmousedown = function(){
@@ -339,10 +363,22 @@ window.addEventListener('load', function(){
     document.getElementById( "Yctrl" ).onmouseup = function(){
         clearInterval($intervalID);
     };
+    document.getElementById( "Yctrl" ).ontouchstart = function(){
+        $intervalID = setInterval(function(){add_force(0,-1000,0);}, 20);
+    };
+    document.getElementById( "Yctrl" ).ontouchend = function(){
+        clearInterval($intervalID);
+    };
     document.getElementById( "Zctrl" ).onmousedown = function(){
         $intervalID = setInterval(function(){add_force(0,0,-1000);}, 20);
     };
     document.getElementById( "Zctrl" ).onmouseup = function(){
+        clearInterval($intervalID);
+    };
+    document.getElementById( "Zctrl" ).ontouchstart = function(){
+        $intervalID = setInterval(function(){add_force(0,0,-1000);}, 20);
+    };
+    document.getElementById( "Zctrl" ).ontouchend = function(){
         clearInterval($intervalID);
     };
     SIM=new simulator;
