@@ -196,19 +196,21 @@ class simulator{
         const width = window.innerWidth;
         const height = window.innerHeight;
 
+        
         // レンダラーを作成
-        this.renderer = new THREE.WebGLRenderer();
-        this.renderer.setSize( width*0.5, height*0.5 );
         this.c = document.getElementById('canvas');
-        this.c.width = 800;
-        this.c.height = 800;
+        const canv_width = height-this.c.offsetTop*1.1;
+        this.renderer = new THREE.WebGLRenderer();
+        this.renderer.setSize( canv_width, canv_width);
+        this.c.width = canv_width;
+        this.c.height = canv_width;
         this.c.appendChild( this.renderer.domElement );
 
         // シーンを作成
         this.scene = new THREE.Scene();
 
         // カメラを作成
-        this.camera = new THREE.PerspectiveCamera(45, width / height);
+        this.camera = new THREE.PerspectiveCamera(45, canv_width / canv_width);
         this.camera.position.set(0, 0, 1000);
 
         // 箱を作成
