@@ -5,7 +5,8 @@ class Link{
         this.vec = new THREE.Vector3(0,0,0);
         this.link_f = new THREE.Vector3(0,0,0);
 
-        this.pos_a_0 = [new THREE.Vector3(50,50,50),new THREE.Vector3(-50,-50,50),new THREE.Vector3(50,-50,-50)];
+        this.pos_a_0 = [new THREE.Vector3(50,0,50),new THREE.Vector3(-50,0,50),new THREE.Vector3(0,0,-50)
+            ,new THREE.Vector3(50,-5,50),new THREE.Vector3(50,5,50),new THREE.Vector3(-50,5,50),new THREE.Vector3(-50,-5,50)];
         this.pos_a   = this.pos_a_0.concat();
 
         this.In      = new THREE.Matrix3();
@@ -211,28 +212,43 @@ class simulator{
 
         // カメラを作成
         this.camera = new THREE.PerspectiveCamera(45, canv_width / canv_width);
-        this.camera.position.set(0, 0, 1000);
+        this.camera.position.set(0, -200, 1000);
+
+        this.loader = new THREE.TextureLoader();
+        this.texture = this.loader.load("foot.png");
 
         // 箱を作成
-        var geometry_box = new THREE.BoxGeometry(100, 100, 100);
-        var material_box = new THREE.MeshNormalMaterial();
+        var geometry_box = new THREE.BoxGeometry(100, 10, 100);
+        var material_box = new THREE.MeshStandardMaterial({map: this.texture});
         this.box = new THREE.Mesh(geometry_box, material_box);
         this.scene.add(this.box);
 
-        var material_line = new THREE.LineBasicMaterial({
-            color: 0xffffff,
-            linewidth: 5
-        });
-        var points = [];
-        points.push( new THREE.Vector3(0,0,0) );
-        points.push( this.box1.GetPosA(0) );
-        var geometry_line1 = new THREE.BufferGeometry().setFromPoints( points );
-        this.line1 = new THREE.Line(geometry_line1, material_line);
-        this.scene.add( this.line1 );
+        this.loader = new THREE.TextureLoader();
+        this.texture = this.loader.load("head.png");
 
-        var geometry_line2 = new THREE.BufferGeometry().setFromPoints( points );
-        this.line2 = new THREE.Line(geometry_line2, material_line);
-        this.scene.add( this.line2 );
+        // 箱を作成
+        var geometry_head = new THREE.BoxGeometry(100, 120, 10);
+        var material_head = new THREE.MeshStandardMaterial({map: this.texture});
+        this.head = new THREE.Mesh(geometry_head, material_head);
+        this.scene.add(this.head);
+        this.head.position.copy(new THREE.Vector3(0,120,0))
+
+        this.loader = new THREE.TextureLoader();
+        this.texture = this.loader.load("body.png");
+
+        // 箱を作成
+        var geometry_body = new THREE.BoxGeometry(100, 100, 10);
+        var material_body = new THREE.MeshStandardMaterial({map: this.texture});
+        this.body = new THREE.Mesh(geometry_body, material_body);
+        this.scene.add(this.body);
+
+        // 平行光源
+        this.directionalLight = new THREE.DirectionalLight(0xFFFFFF);
+        this.directionalLight.position.set(1, 1, 1);
+        this.scene.add(this.directionalLight);
+
+        this.ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.3);
+        this.scene.add( this.ambientLight );
 
         var dir    = new THREE.Vector3();
         var origin = new THREE.Vector3();
@@ -244,8 +260,8 @@ class simulator{
     }
     
     main_loop(){
-        var spring1 = new THREE.Vector3( 200,100,0);
-        var spring2 = new THREE.Vector3(-200,100,0);
+        var spring1 = new THREE.Vector3( 50,60,0);
+        var spring2 = new THREE.Vector3(-50,60,0);
         this.box1.updata_pos_a();
         var vec1 = this.box1.GetPosA(0).add(pre_posA1.multiplyScalar(-1)).multiplyScalar(1/T);
         var vec2 = this.box1.GetPosA(1).add(pre_posA2.multiplyScalar(-1)).multiplyScalar(1/T);
@@ -262,20 +278,20 @@ class simulator{
         this.box1.link_f.add(apply_F);
         this.box1.link_t.add(this.box1.GetPosA(2).add(this.box1.GetPos.multiplyScalar(-1)).cross(apply_F));
 
+        this.body.geometry.vertices[0].copy(new THREE.Vector3(50,60,5));
+        this.body.geometry.vertices[1].copy(new THREE.Vector3(50,60,-5));
+        this.body.geometry.vertices[2].copy(this.box1.GetPosA(3));
+        this.body.geometry.vertices[3].copy(this.box1.GetPosA(4));
+        this.body.geometry.vertices[4].copy(new THREE.Vector3(-50,60,-5));
+        this.body.geometry.vertices[5].copy(new THREE.Vector3(-50,60, 5));
+        this.body.geometry.vertices[6].copy(this.box1.GetPosA(5));
+        this.body.geometry.vertices[7].copy(this.box1.GetPosA(6));
+        this.body.geometry.verticesNeedUpdate = true;
+        this.body.geometry.computeFaceNormals();
+        this.body.geometry.computeVertexNormals();
 
         pre_posA1.copy(this.box1.GetPosA(0));
         pre_posA2.copy(this.box1.GetPosA(1));
-        
-        var points = [];
-        points.push( spring1 );
-        points.push( this.box1.GetPosA(0) );
-        this.line1.geometry.setFromPoints( points );
-
-        points = [];
-        points.push( spring2 );
-        points.push( this.box1.GetPosA(1) );
-        this.line2.geometry.setFromPoints( points );
-
         
         this.box1.update_phis();
         this.box.position.copy(this.box1.GetPos);
@@ -327,7 +343,7 @@ var T = 0.001;
 var g = new THREE.Vector3(0, -9810., 0);
 var pre_posA1 = new THREE.Vector3();
 var pre_posA2 = new THREE.Vector3();
-var apply_F   = new THREE.Vector3(100,80000,100);
+var apply_F   = new THREE.Vector3(100,-80000,100);
 window.addEventListener('load', function(){
     document.getElementById( "X" ).onmousedown = function(){
         $intervalID = setInterval(function(){add_force(1000,0,0);}, 20);

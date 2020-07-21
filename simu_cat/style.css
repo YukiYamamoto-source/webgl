@@ -1,0 +1,18 @@
+button {
+    user-select: none;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 30px;
+}
+input{
+    user-select: none;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 30px;
+}
+div{
+    user-select: none;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 3px 30px;
+}
