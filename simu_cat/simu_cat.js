@@ -210,6 +210,10 @@ class simulator{
         // シーンを作成
         this.scene = new THREE.Scene();
 
+        var bcloader = new THREE.TextureLoader();
+        var bc       = bcloader.load("sky.jpg");
+        this.scene.background = bc;
+
         // カメラを作成
         this.camera = new THREE.PerspectiveCamera(45, canv_width / canv_width);
         this.camera.position.set(0, -200, 1000);
