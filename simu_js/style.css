@@ -2,17 +2,27 @@ button {
     user-select: none;
     font-size: 1.4em;
     font-weight: bold;
-    padding: 10px 30px;
+    padding: 10px 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 100px;
+
 }
 input{
     user-select: none;
     font-size: 1.4em;
     font-weight: bold;
     padding: 10px 30px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 300px;
 }
 div{
     user-select: none;
     font-size: 1.4em;
     font-weight: bold;
     padding: 3px 30px;
+    text-align:  center;
 }

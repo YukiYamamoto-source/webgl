@@ -200,7 +200,7 @@ class simulator{
         
         // レンダラーを作成
         this.c = document.getElementById('canvas');
-        const canv_width = height-this.c.offsetTop*1.1;
+        const canv_width = height/2-this.c.offsetTop*1.1;
         this.renderer = new THREE.WebGLRenderer();
         this.renderer.setSize( canv_width, canv_width);
         this.c.width = canv_width;
@@ -315,25 +315,25 @@ function add_force(x,y,z){
 
 document.body.addEventListener('keydown',
 event => {
-    if (event.key === 'q') {
+    if (event.key === " ") {
         reset_force();
     }
-    else if (event.key === 'x' && event.ctrlKey ) {
+    else if (event.key === 'ArrowLeft' ) {
         add_force(-1000,0,0);
     }
-    else if (event.key === 'x') {
+    else if (event.key === 'ArrowRight') {
         add_force(1000,0,0);
     }
-    else if (event.key === 'y' && event.ctrlKey ) {
+    else if (event.key === 'ArrowDown' ) {
         add_force(0,-1000,0);
     }
-    else if (event.key === 'y') {
+    else if (event.key === 'ArrowUp') {
         add_force(0,1000,0);
     }
-    else if (event.key === 'z' && event.ctrlKey ) {
+    else if (event.key === 'a' ) {
         add_force(0,0,-1000);
     }
-    else if (event.key === 'z') {
+    else if (event.key === 's') {
         add_force(0,0,1000);;
     }
 });
@@ -345,76 +345,76 @@ var pre_posA1 = new THREE.Vector3();
 var pre_posA2 = new THREE.Vector3();
 var apply_F   = new THREE.Vector3(100,-80000,100);
 window.addEventListener('load', function(){
-    document.getElementById( "X" ).onmousedown = function(){
+    document.getElementById( "right" ).onmousedown = function(){
         $intervalID = setInterval(function(){add_force(1000,0,0);}, 20);
     };
-    document.getElementById( "X" ).onmouseup = function(){
+    document.getElementById( "right" ).onmouseup = function(){
         clearInterval($intervalID);
     };
-    document.getElementById( "X" ).ontouchstart = function(){
+    document.getElementById( "right" ).ontouchstart = function(){
         $intervalID = setInterval(function(){add_force(1000,0,0);}, 20);
     };
-    document.getElementById( "X" ).ontouchend = function(){
+    document.getElementById( "right" ).ontouchend = function(){
         clearInterval($intervalID);
     };
-    document.getElementById( "Y" ).onmousedown = function(){
+    document.getElementById( "up" ).onmousedown = function(){
         $intervalID = setInterval(function(){add_force(0,1000,0);}, 20);
     };
-    document.getElementById( "Y" ).onmouseup = function(){
+    document.getElementById( "up" ).onmouseup = function(){
         clearInterval($intervalID);
     };
-    document.getElementById( "Y" ).ontouchstart = function(){
+    document.getElementById( "up" ).ontouchstart = function(){
         $intervalID = setInterval(function(){add_force(0,1000,0);}, 20);
     };
-    document.getElementById( "Y" ).ontouchend = function(){
+    document.getElementById( "up" ).ontouchend = function(){
         clearInterval($intervalID);
     };
-    document.getElementById( "Z" ).onmousedown = function(){
+    document.getElementById( "pull" ).onmousedown = function(){
         $intervalID = setInterval(function(){add_force(0,0,1000);}, 20);
     };
-    document.getElementById( "Z" ).onmouseup = function(){
+    document.getElementById( "pull" ).onmouseup = function(){
         clearInterval($intervalID);
     };
-    document.getElementById( "Z" ).ontouchstart = function(){
+    document.getElementById( "pull" ).ontouchstart = function(){
         $intervalID = setInterval(function(){add_force(0,0,1000);}, 20);
     };
-    document.getElementById( "Z" ).ontouchend = function(){
+    document.getElementById( "pull" ).ontouchend = function(){
         clearInterval($intervalID);
     };
-    document.getElementById( "Xctrl" ).onmousedown = function(){
+    document.getElementById( "left" ).onmousedown = function(){
         $intervalID = setInterval(function(){add_force(-1000,0,0);}, 20);
     };
-    document.getElementById( "Xctrl" ).onmouseup = function(){
+    document.getElementById( "left" ).onmouseup = function(){
         clearInterval($intervalID);
     };
-    document.getElementById( "Xctrl" ).ontouchstart = function(){
+    document.getElementById( "left" ).ontouchstart = function(){
         $intervalID = setInterval(function(){add_force(-1000,0,0);}, 20);
     };
-    document.getElementById( "Xctrl" ).ontouchend = function(){
+    document.getElementById( "left" ).ontouchend = function(){
         clearInterval($intervalID);
     };
-    document.getElementById( "Yctrl" ).onmousedown = function(){
+    document.getElementById( "down" ).onmousedown = function(){
         $intervalID = setInterval(function(){add_force(0,-1000,0);}, 20);
     };
-    document.getElementById( "Yctrl" ).onmouseup = function(){
+    document.getElementById( "down" ).onmouseup = function(){
         clearInterval($intervalID);
     };
-    document.getElementById( "Yctrl" ).ontouchstart = function(){
+    document.getElementById( "down" ).ontouchstart = function(){
         $intervalID = setInterval(function(){add_force(0,-1000,0);}, 20);
     };
-    document.getElementById( "Yctrl" ).ontouchend = function(){
+    document.getElementById( "down" ).ontouchend = function(){
         clearInterval($intervalID);
     };
-    document.getElementById( "Zctrl" ).onmousedown = function(){
+    document.getElementById( "push" ).onmousedown = function(){
         $intervalID = setInterval(function(){add_force(0,0,-1000);}, 20);
     };
-    document.getElementById( "Zctrl" ).onmouseup = function(){
+    document.getElementById( "push" ).onmouseup = function(){
         clearInterval($intervalID);
     };
-    document.getElementById( "Zctrl" ).ontouchstart = function(){
+    document.getElementById( "push" ).ontouchstart = function(){
         $intervalID = setInterval(function(){add_force(0,0,-1000);}, 20);
     };
-    document.getElementById( "Zctrl" ).ontouchend = function(){
+    document.getElementById( "push" ).ontouchend = function(){
         clearInterval($intervalID);
     };
     SIM=new simulator;

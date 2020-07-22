@@ -4,19 +4,23 @@
         <link href="style.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-        <input type="button" value="Q" onclick="reset_force()"/>
-        <button id="X">X</button>
-        <button id="Y">Y</button>
-        <button id="Z">Z</button>
-        <button id="Xctrl">X+ctrl</button>
-        <button id="Yctrl">Y+ctrl</button>
-        <button id="Zctrl">Z+ctrl</button>
-        <div>Q:加える力をゼロにする</div>
-        <div>X(+ctrl):x方向に加える力を増やす(減らす)</div>
-        <div>Y(+ctrl):y方向に加える力を増やす(減らす)</div>
-        <div>Z(+ctrl):z方向に加える力を増やす(減らす)</div>
         <div id="canvas"></div>
 		<script src="three.js"></script>
         <script src="simu_cat.js"></script>
+        <div>
+            <button id="up">↑</button>
+        </div>
+        <div>
+            <button id="left">←</button>
+            <button id="pull">pull</button>
+            <button id="push">push</button>
+            <button id="right">→</button>
+        </div>
+        <div>
+            <button id="down">↓</button>
+        </div>
+        <div>
+            <input type="button" value="release" onclick="reset_force()"/>
+        </div>
 	</body>
 </html>
