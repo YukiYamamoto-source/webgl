@@ -223,7 +223,7 @@ class simulator{
 
         // 箱を作成
         var geometry_box = new THREE.BoxGeometry(100, 10, 100);
-        var material_box = new THREE.MeshStandardMaterial({map: this.texture});
+        var material_box = new THREE.MeshStandardMaterial({map: this.texture, transparent: true});
         this.box = new THREE.Mesh(geometry_box, material_box);
         this.scene.add(this.box);
 
@@ -232,7 +232,7 @@ class simulator{
 
         // 箱を作成
         var geometry_head = new THREE.BoxGeometry(100, 120, 10);
-        var material_head = new THREE.MeshStandardMaterial({map: this.texture});
+        var material_head = new THREE.MeshStandardMaterial({map: this.texture, transparent: true});
         this.head = new THREE.Mesh(geometry_head, material_head);
         this.scene.add(this.head);
         this.head.position.copy(new THREE.Vector3(0,120,0))
@@ -242,7 +242,7 @@ class simulator{
 
         // 箱を作成
         var geometry_body = new THREE.BoxGeometry(100, 100, 10);
-        var material_body = new THREE.MeshStandardMaterial({map: this.texture});
+        var material_body = new THREE.MeshStandardMaterial({map: this.texture, transparent: true});
         this.body = new THREE.Mesh(geometry_body, material_body);
         this.scene.add(this.body);
 
