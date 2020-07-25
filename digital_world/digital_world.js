@@ -1,10 +1,10 @@
 class Link{
     constructor(m){
         this.Mt  = Math.random()*5;//m;
-        var range = 10000;
+        var range = 3000;
         this.K = Math.random()*500;
         this.B = Math.random()*1;
-        this.spring1 = new THREE.Vector3(Math.round(Math.random()*range*2)-range, Math.round(Math.random()*range), Math.round(Math.random()*range)-range/2);
+        this.spring1 = new THREE.Vector3(Math.round(Math.random()*range*3)-1.5*range, Math.round(Math.random()*range*1.2), Math.round(Math.random()*range)-range/2);
         this.pos = this.spring1.clone();
         this.vec = new THREE.Vector3(0,0,0);
         this.link_f = new THREE.Vector3(0,0,0);
@@ -332,12 +332,12 @@ var flag = 0;
 var T = 0.001;
 var f = 5.;
 var g = new THREE.Vector3(0, -9810., 0);
-var boxnum = 2000;
+var boxnum = 500;
 var pre_posA1 = [];
 for(var i=0;i<boxnum;i++){
     pre_posA1.push( new THREE.Vector3() );
 }
-var apply_F   = new THREE.Vector3(5000,50,-3000);
+var apply_F   = new THREE.Vector3(3000,50,-3000);
 var origin    = apply_F.clone();
 var SIM=new simulator;
 
