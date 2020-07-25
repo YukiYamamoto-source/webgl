@@ -218,8 +218,8 @@ class simulator{
         this.scene = new THREE.Scene();
 
         // カメラを作成
-        this.camera = new THREE.PerspectiveCamera(45, canv_width / canv_height, 1, 40000);
-        this.camera.lookAt(new THREE.Vector3(-500,200,500));
+        this.camera = new THREE.PerspectiveCamera(45, canv_width / canv_height, 1, 10000);
+        this.camera.lookAt(new THREE.Vector3(-250,150,400));
 
         // 箱を作成
         var geometry_box = new THREE.BoxGeometry(100, 100, 100);
@@ -332,7 +332,7 @@ var flag = 0;
 var T = 0.001;
 var f = 5.;
 var g = new THREE.Vector3(0, -9810., 0);
-var boxnum = 500;
+var boxnum = 300;
 var pre_posA1 = [];
 for(var i=0;i<boxnum;i++){
     pre_posA1.push( new THREE.Vector3() );
