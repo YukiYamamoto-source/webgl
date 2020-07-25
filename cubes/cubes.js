@@ -243,7 +243,7 @@ class simulator{
         var gridHelper = new THREE.GridHelper( 10000, 100 );
         this.scene.add( gridHelper ); 
 
-        var light = new THREE.AmbientLight( 0xffffff, 0.5 );
+        var light = new THREE.AmbientLight( 0xffffff, 1.0 );
         this.scene.add( light );
     }
     
@@ -269,13 +269,25 @@ class simulator{
             this.box[i].position.copy(this.box1[i].GetPos);
             this.box[i].setRotationFromMatrix(this.box1[i].Rot4);
             if(flag==1){
-                if(Math.random()<0.03){
-                    this.box[i].geometry.colorsNeedUpdate = true;
-                    this.box[i].material.color.setHex( 0xff0000 );
-                    this.box1[i].pos_a_0[0] = new THREE.Vector3(50, 50, 50)
-                    this.box1[i].K = 50000.; 
-                    this.box1[i].B = 0.005;
-                    this.box1[i].Mt = 0.5;
+                this.box[i].geometry.colorsNeedUpdate = true;
+                var hsl;
+                hsl = this.box[i].material.color.getHSL(this.box[i].material.color);
+                this.box[i].material.color.setHSL(hsl.h+Math.sign(Math.random()-0.5)*0.005, 0.8, 0.7);
+                this.wireframe[i].material.color.set("black");
+                if(sw==1){
+                    this.box1[i].K = Math.random()*5000; 
+                    this.box1[i].B = Math.random()*100;
+                    this.box1[i].Mt = Math.random()*0.5;
+                    if(i==boxnum-1) sw = 0;
+                }
+            }
+            else{
+                this.wireframe[i].material.color.set("gray");
+                if(sw==0){
+                    this.box1[i].K = Math.random()*500.; 
+                    this.box1[i].B = Math.random()*1;
+                    this.box1[i].Mt = Math.random()*10;
+                    if(i==boxnum-1) sw = 1;
                 }
             }
         }
@@ -320,17 +332,20 @@ event => {
 });
 
 window.addEventListener('load', function(){
-    document.getElementById( "canvas" ).onmousedown = function(){
-        flag = 1;
+    document.getElementById( "canvas" ).onmouseup = function(){
+        if(flag==0){ flag = 1; }
+        else       { flag = 0; }
     };
-    document.getElementById( "canvas" ).ontouchend = function(){
-        flag = 1;
+    document.getElementById( "canvas" ).ontouchcancel = function(){
+        if(flag==0){ flag = 1; }
+        else       { flag = 0; }
     };
 });
 // ページの読み込みを待つ
 var flag = 0;
 var T = 0.001;
 var f = 5.;
+var sw = 0;
 var g = new THREE.Vector3(0, -9810., 0);
 var boxnum = 300;
 var pre_posA1 = [];
