@@ -9,9 +9,8 @@ function init() {
     // レンダラーを作成
     const c = document.getElementById('canvas');
     const canv_width  = width-c.offsetLeft*2;
-    const canv_height = height-c.offsetTop;
+    const canv_height = canv_width/2;
     const renderer = new THREE.WebGLRenderer();
-    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize( canv_width, canv_height);
     renderer.setClearColor(0x000000, 1.0);
     c.width = canv_width;
