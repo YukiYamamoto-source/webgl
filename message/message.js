@@ -9,7 +9,7 @@ function init() {
     // レンダラーを作成
     const c = document.getElementById('canvas');
     const canv_width  = width-c.offsetLeft*2;
-    const canv_height = height-c.offsetTop;
+    const canv_height = canv_width/2;
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( canv_width, canv_height);
     renderer.setClearColor(0x000000, 1.0);
@@ -31,7 +31,7 @@ function init() {
     scene.fog = new THREE.Fog(0xf9f9f9, 10, 5000);
 
     // カメラを作成
-    const camera = new THREE.PerspectiveCamera(45, width / height, 10,10000);
+    const camera = new THREE.PerspectiveCamera(45, canv_width / canv_height, 10,10000);
     
     // カメラコントローラーを作成
     const controls = new THREE.OrbitControls(camera, renderer.domElement );
