@@ -245,6 +245,9 @@ class simulator{
 
         var light = new THREE.AmbientLight( 0xffffff, 1.0 );
         this.scene.add( light );
+
+        // new THREE.Fog(色, 開始距離, 終点距離);
+        this.scene.fog = new THREE.Fog(0x000000, 50, 10000);
     }
     
     main_loop(){
