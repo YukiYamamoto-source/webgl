@@ -53,8 +53,8 @@ function init() {
             curveSegments: 12
         });
         var materials = [
-            new THREE.MeshBasicMaterial( { color: 0xff9979, overdraw: 0.5 } ),
-            new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: 0.5 } )
+            new THREE.MeshBasicMaterial( { color: 0xff9979 } ),
+            new THREE.MeshBasicMaterial( { color: 0x000000 } )
         ];
         textMesh = new THREE.Mesh(textGeometry, materials);
         scene.add(textMesh);
@@ -68,8 +68,8 @@ function init() {
             curveSegments: 12
         });
         var materials2 = [
-            new THREE.MeshBasicMaterial( { color: 0x7bff7c, overdraw: 0.5 } ),
-            new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: 0.5 } )
+            new THREE.MeshBasicMaterial( { color: 0x7bff7c } ),
+            new THREE.MeshBasicMaterial( { color: 0x000000 } )
         ];
         textMesh2 = new THREE.Mesh(textGeometry2, materials2);
         scene.add(textMesh2);
@@ -83,8 +83,8 @@ function init() {
             curveSegments: 12
         });
         var materials10 = [
-            new THREE.MeshBasicMaterial( { color: 0x7bff7c, overdraw: 0.5 } ),
-            new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: 0.5 } )
+            new THREE.MeshBasicMaterial( { color: 0x00fa9a } ),
+            new THREE.MeshBasicMaterial( { color: 0x000000 } )
         ];
         textMesh10 = new THREE.Mesh(textGeometry10, materials10);
         scene.add(textMesh10);
@@ -99,8 +99,8 @@ function init() {
             curveSegments: 12
         });
         var materials11 = [
-            new THREE.MeshBasicMaterial( { color: 0x7bff7c, overdraw: 0.5 } ),
-            new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: 0.5 } )
+            new THREE.MeshBasicMaterial( { color: 0x87cefa } ),
+            new THREE.MeshBasicMaterial( { color: 0x000000 } )
         ];
         textMesh11 = new THREE.Mesh(textGeometry11, materials11);
         scene.add(textMesh11);
@@ -115,8 +115,8 @@ function init() {
             curveSegments: 12
         });
         var materials12 = [
-            new THREE.MeshBasicMaterial( { color: 0x7bff7c, overdraw: 0.5 } ),
-            new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: 0.5 } )
+            new THREE.MeshBasicMaterial( { color: 0xffa500 } ),
+            new THREE.MeshBasicMaterial( { color: 0x000000 } )
         ];
         textMesh12 = new THREE.Mesh(textGeometry12, materials12);
         scene.add(textMesh12);
@@ -133,8 +133,8 @@ function init() {
             curveSegments: 12
         });
         var materials3 = [
-            new THREE.MeshBasicMaterial( { color: 0xf57796, overdraw: 0.5 } ),
-            new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: 0.5 } )
+            new THREE.MeshBasicMaterial( { color: 0xf57796 } ),
+            new THREE.MeshBasicMaterial( { color: 0x000000 } )
         ];
         textMesh3 = new THREE.Mesh(textGeometry3, materials3);
         scene.add(textMesh3);
@@ -328,6 +328,7 @@ function init() {
             textMesh6.visible = false;
 
             controls.autoRotate = true;
+            controls.autoRotateSpeed = 1.5;
             camera.position.set(0, 200, 0);
             controls.target = new THREE.Vector3(-2000,0,500);
             textMesh.visible  = true;
@@ -343,12 +344,14 @@ function init() {
             }
         }
         if(time==1400){
-            camera.position.set(0, 200, 0);
+            camera.position.set(0, 300, 200);
             controls.target = new THREE.Vector3(0,0,2000);
+            controls.autoRotateSpeed = -1.5;
         }
         if(time==1800){
             camera.position.set(0, 200, 0);
             controls.target = new THREE.Vector3(2000,0,500);
+            controls.autoRotateSpeed = 1.3;
         }
         if(time==2200){
             controls.autoRotate = false;
