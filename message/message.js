@@ -61,7 +61,7 @@ function init() {
         textMesh.position.set(-head,0,-dep);
         textMesh.visible = false;
 
-        var textGeometry2 = new THREE.TextGeometry("ぴっぴ", {
+        var textGeometry2 = new THREE.TextGeometry("姉ちゃん", {
             font: font,
             size: 200,
             height: 50,
@@ -92,7 +92,7 @@ function init() {
         textMesh10.position.set(1.7*head,0,1.5*dep);
         textMesh10.visible = false;
 
-        var textGeometry11 = new THREE.TextGeometry("いつもかまってくれてありがとう。", {
+        var textGeometry11 = new THREE.TextGeometry("いつもありがとう。", {
             font: font,
             size: 200,
             height: 50,
@@ -126,7 +126,7 @@ function init() {
     } );
 
     loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
-        var textGeometry3 = new THREE.TextGeometry("2020/08/14", {
+        var textGeometry3 = new THREE.TextGeometry("2020/01/01", {
             font: font,
             size: 200,
             height: 50,
@@ -150,7 +150,7 @@ function init() {
         scene.add(textMesh4);
         textMesh4.position.set(-800,0,-dep);
         
-        var textGeometry5 = new THREE.TextGeometry("2020/08/15", {
+        var textGeometry5 = new THREE.TextGeometry("2020/01/02", {
             font: font,
             size: 200,
             height: 50,
