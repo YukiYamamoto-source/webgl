@@ -61,7 +61,7 @@ function init() {
         textMesh.position.set(-head,0,-dep);
         textMesh.visible = false;
 
-        var textGeometry2 = new THREE.TextGeometry("姉ちゃん", {
+        var textGeometry2 = new THREE.TextGeometry("XXXXXX", {
             font: font,
             size: 200,
             height: 50,
