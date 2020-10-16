@@ -7,7 +7,7 @@ WebGLの練習のために，製作したプログラムを公開しています
 白い線はゴムになっていて，箱を黄色い矢印の方向に引っ張っています．<br>
 画面下にある矢印ボタンで引っ張る方向を変えれます．<br>
 さらに，"Release"ボタンで箱を引っ張るのをやめることができます．<br>
-### 遊べるURL：https://yukiyamamoto-source.github.io/webgl/message/message.html <br>
+### 遊べるURL：https://yukiyamamoto-source.github.io/webgl/simu_js/simu_js.html <br>
 ![simu_jsのサンプル画像](https://yukiyamamoto-source.github.io/webgl/simu_js/simu_js_サンプル.PNG)
 
 ## コード2：simu_cat
