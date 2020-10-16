@@ -1,11 +1,11 @@
 ## 概要
 WebGLの練習のために，製作したプログラムを公開しています．<br>
-下記のURLから製作したグラフィックを見れるので，ぜひ見ていってください！<br>
-https://yukiyamamoto-source.github.io/webgl/
+各コード概要のURLから製作したグラフィックを見れるので，ぜひ見ていってください！<br>
 
 ## コード1：cudes
 大量の立方体がバネ・ダンパで釣り下がっている様子を描画しています．<br>
 画面をクリックすると，立方体の色と立方体を吊り下げているバネの剛性が変化します．<br>
+https://yukiyamamoto-source.github.io/webgl/
 ![cubesのサンプル画像](https://yukiyamamoto-source.github.io/webgl/cubes/cubes_サンプル.PNG)
 
 ## コード2：grgr
