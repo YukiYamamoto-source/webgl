@@ -7,7 +7,7 @@ WebGLの練習のために，製作したプログラムを公開しています
 白い線はゴムになっていて，箱を黄色い矢印の方向に引っ張っています．<br>
 画面下にある矢印ボタンで引っ張る方向を変えれます．<br>
 さらに，"Release"ボタンで箱を引っ張るのをやめることができます．<br>
-### 遊べるURL：https://yukiyamamoto-source.github.io/webgl/simu_js/simu_js.html <br>
+### 遊べるURL：https://yukiyamamoto-source.github.io/webgl/simu_js/simulator.html <br>
 ![simu_jsのサンプル画像](https://yukiyamamoto-source.github.io/webgl/simu_js/simu_js_サンプル.PNG)
 
 ## コード2：simu_cat
@@ -16,7 +16,7 @@ WebGLの練習のために，製作したプログラムを公開しています
 さらに，"Release"ボタンで箱を引っ張るのをやめることができます．<br>
 平面に猫の画像を貼り付けただけなので，少し違和感のある動きになっています．<br>
 今後，改良する予定です．<br>
-### 遊べるURL：https://yukiyamamoto-source.github.io/webgl/simu_cat/simu_cat.html <br>
+### 遊べるURL：https://yukiyamamoto-source.github.io/webgl/simu_cat/simulator.html <br>
 ![simu_catのサンプル画像](https://yukiyamamoto-source.github.io/webgl/simu_cat/simu_cat_サンプル.PNG)
 
 ## コード3：cudes
@@ -37,5 +37,5 @@ https://wgld.org/sitemap.html <br>
 ## コード5：message
 友人の誕生日をお祝いするメッセージを製作しました．<br>
 紙テープが舞っている表現を頑張って製作しました．<br>
-### 遊べるURL：https://yukiyamamoto-source.github.io/webgl/message/message.html <br>
+### 遊べるURL：https://yukiyamamoto-source.github.io/webgl/message/index.html <br>
 ![messageのサンプル画像](https://yukiyamamoto-source.github.io/webgl/message/message_サンプル.PNG)
