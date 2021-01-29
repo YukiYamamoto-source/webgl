@@ -30,3 +30,9 @@ https://wgld.org/sitemap.html <br>
 平面に猫の画像を貼り付けただけなので，少し違和感のある動きになっています．
 今後，改良する予定です．<br>
 ![simu_catのサンプル画像](https://yukiyamamoto-source.github.io/webgl/simu_cat/simu_cat_サンプル.PNG)
+
+## 使用したライブラリなど
+WebGLライブラリ「three.js』 https://threejs.org/<br>
+フォント『Nikkyou Sans Font』 https://www.fontspace.com/nikkyou-sans-font-f31053<br>
+参考にしたサイト『wgld.org』 https://wgld.org/sitemap.html<br>
+参考にしたサイト『けんごのお屋敷　WebGLでなんか綺麗なキラキラなパーティクルの演出を作ってみた』 http://tkengo.github.io/blog/2015/07/15/webgl-particle-effect-we-are-xseeds/
