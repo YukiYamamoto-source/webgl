@@ -40,8 +40,8 @@ https://wgld.org/sitemap.html <br>
 ### 遊べるURL：https://yukiyamamoto-source.github.io/webgl/message/index.html <br>
 ![messageのサンプル画像](https://yukiyamamoto-source.github.io/webgl/message/message_サンプル.PNG)
 
-## 使用したライブラリなど
-WebGLライブラリ「three.js』 https://threejs.org/<br>
+## 使用したライブラリ，参考にしたサイトなど
+WebGLライブラリ『three.js』 https://threejs.org/<br>
 フォント『Nikkyou Sans Font』 https://www.fontspace.com/nikkyou-sans-font-f31053<br>
 参考にしたサイト『wgld.org』 https://wgld.org/sitemap.html<br>
 参考にしたサイト『けんごのお屋敷　WebGLでなんか綺麗なキラキラなパーティクルの演出を作ってみた』 http://tkengo.github.io/blog/2015/07/15/webgl-particle-effect-we-are-xseeds/
